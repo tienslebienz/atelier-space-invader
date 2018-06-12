@@ -1,4 +1,5 @@
 import Player from './player';
+import Invader from './invader';
 
 export default class Game {
     constructor(canvasId) {
@@ -10,7 +11,9 @@ export default class Game {
             y: canvas.width,
         };
 
-        this.bodies = [new Player(this, this.gameSize)];
+        this.bodies = [];
+        this.createPlayer();
+        this.createInvaders();
 
         const tick = () => {
             this.update();
@@ -41,5 +44,17 @@ export default class Game {
 
     addBody(body) {
         this.bodies.push(body);
+    }
+
+    createInvaders() {
+        for (let i = 0; i < 24; ++i) {
+            const x = 30 + (i % 8) * 30;
+            const y = 30 + (i % 3) * 30;
+            this.addBody(new Invader(this, { x, y }));
+        }
+    }
+
+    createPlayer() {
+        this.addBody(new Player(this, this.gameSize))
     }
 }
