@@ -11,6 +11,7 @@ Dependencies
 ------------
 
  * [parcel](https://parceljs.org/)
+ * [babel](https://babeljs.io/)
 
 Commands
 --------
