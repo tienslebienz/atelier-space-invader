@@ -1,3 +1,5 @@
+import Player from './player';
+
 export default class Game {
     constructor(canvasId) {
         const canvas = document.getElementById(canvasId);
@@ -7,6 +9,8 @@ export default class Game {
             x: canvas.height,
             y: canvas.width,
         };
+
+        this.bodies = [new Player(this, this.gameSize)];
 
         const tick = () => {
             this.update();
@@ -18,9 +22,19 @@ export default class Game {
     }
 
     update() {
+        this.bodies.forEach(body => body.update());
+    }
+
+    drawRect(body) {
+        this.screen.fillRect(
+            body.center.x - body.size.x / 2,
+            body.center.y - body.size.y / 2,
+            body.size.x,
+            body.size.y,
+        );
     }
 
     draw() {
-        this.screen.fillRect(30, 30, 40, 40);
+        this.bodies.forEach(body => this.drawRect(body));
     }
 }
