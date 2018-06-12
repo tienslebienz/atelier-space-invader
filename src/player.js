@@ -1,4 +1,5 @@
 import Keyboarder, { KEYS } from './keyboarder';
+import Bullet from './bullet';
 
 export default class Player {
     constructor(game, gameSize) {
@@ -17,6 +18,17 @@ export default class Player {
         }
         if (this.keyboarder.isDown(KEYS.RIGHT)) {
             this.center.x += 2;
+        }
+
+        if (this.keyboarder.isDown(KEYS.SPACE)) {
+            const bulletCenter = {
+                x: this.center.x,
+                y: this.center.y - this.size.x,
+            };
+            const bulletVelocity = { x: 0, y: -6 };
+            const bullet = new Bullet(bulletCenter, bulletVelocity);
+
+            this.game.addBody(bullet);
         }
     }
 }
