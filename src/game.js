@@ -1,6 +1,16 @@
 import Player from './player';
 import Invader from './invader';
 
+function collinding(b1, b2) {
+    return !(
+        b1 === b2 ||
+        b1.center.x + b1.size.x / 2 < b2.center.x - b2.size.x / 2 ||
+        b1.center.x - b1.size.x / 2 > b2.center.x + b2.size.x / 2 ||
+        b1.center.y + b1.size.y / 2 < b2.center.y - b2.size.y / 2 ||
+        b1.center.y - b1.size.y / 2 > b2.center.y + b2.size.y / 2
+    );
+}
+
 export default class Game {
     constructor(canvasId) {
         const canvas = document.getElementById(canvasId);
@@ -25,6 +35,9 @@ export default class Game {
     }
 
     update() {
+        this.bodies = this.bodies.filter(
+            b1 => this.bodies.every(b2 => !collinding(b1, b2))
+        );
         this.bodies.forEach(body => body.update());
     }
 
