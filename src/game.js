@@ -35,6 +35,7 @@ export default class Game {
     }
 
     draw() {
+        this.screen.clearRect(0, 0, this.gameSize.x, this.gameSize.y);
         this.bodies.forEach(body => this.drawRect(body));
     }
 }
