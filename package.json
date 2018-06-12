@@ -5,5 +5,12 @@
   "main": "src/index.js",
   "repository": "git@github.com:tienslebienz/atelier-space-invader.git",
   "author": "Etienne Crombez <etienne.crombez@zenika.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.8.1"
+  }
 }
