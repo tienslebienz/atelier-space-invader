@@ -1,6 +1,11 @@
 atelier-space-invader
 =====================
 
+Inspiration
+-----------
+
+[Mary live-codes a JavaScript game from scratch](https://vimeo.com/105955605)
+
 Requirements
 ------------
 
