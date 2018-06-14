@@ -1,4 +1,5 @@
 import Keyboarder, { KEYS } from './keyboarder';
+import Sounds from './sound';
 import Bullet from './bullet';
 
 export default class Player {
@@ -10,6 +11,7 @@ export default class Player {
             y: gameSize.y - this.size.x,
         };
         this.keyboarder = new Keyboarder();
+        this.sounds = new Sounds();
     }
 
     update() {
@@ -29,6 +31,7 @@ export default class Player {
             const bullet = new Bullet(bulletCenter, bulletVelocity);
 
             this.game.addBody(bullet);
+            this.sounds.pew();
         }
     }
 }
