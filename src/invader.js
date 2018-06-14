@@ -16,5 +16,16 @@ export default class Invader {
 
         this.center.x += this.speedX;
         this.patrolX += this.speedX;
+
+        if (Math.random() > 0.995 && !this.game.invadersBelow(this)) {
+            const bulletCenter = {
+                x: this.center.x,
+                y: this.center.y + this.size.x,
+            };
+            const bulletVelocity = { x: Math.random() - 0.5, y: 2 };
+            const bullet = new Bullet(bulletCenter, bulletVelocity);
+
+            this.game.addBody(bullet);
+        }
     }
 }

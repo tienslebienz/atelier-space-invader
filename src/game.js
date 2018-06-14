@@ -70,4 +70,12 @@ export default class Game {
     createPlayer() {
         this.addBody(new Player(this, this.gameSize))
     }
+
+    invadersBelow(invader) {
+        return this.bodies.some(b =>
+            b instanceof Invader &&
+            b.center.y > invader.center.y &&
+            b.center.x - invader.center.x < invader.size.x
+        );
+    }
 }
